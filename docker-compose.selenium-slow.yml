@@ -1,0 +1,32 @@
+version: "2.2"
+
+services:
+  hub:
+    image: selenium/hub:3.14.0-helium
+    ports:
+      - 4444:4444
+    cpus: 0.3
+
+  chrome:
+    image: selenium/node-chrome-debug:3.14.0-helium
+    ports:
+      - 5900:5900
+    environment:
+      - VNC_NO_PASSWORD=1
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      - SCREEN_WIDTH=1980
+      - SCREEN_HEIGHT=1080
+    cpus: 0.3
+
+  firefox:
+    image: selenium/node-firefox-debug:3.14.0-helium
+    ports:
+      - 5901:5900
+    environment:
+      - VNC_NO_PASSWORD=1
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      - SCREEN_WIDTH=1980
+      - SCREEN_HEIGHT=1080
+    cpus: 0.3

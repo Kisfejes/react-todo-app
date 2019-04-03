@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.9.0"
+    "@wdio/cli": "^5.7.8",
+    "@wdio/local-runner": "^5.7.8",
+    "@wdio/mocha-framework": "^5.7.8",
+    "@wdio/selenium-standalone-service": "^5.7.8",
+    "@wdio/spec-reporter": "^5.7.8",
+    "@wdio/sync": "^5.7.8",
+    "react-scripts": "^2.1.8",
+    "wdio-mochawesome-reporter": "^2.0.1"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "chai": "^4.2.0",
     "immutability-helper": "^2.1.1",
     "keycode-js": "^0.0.4",
     "react": "^15.4.2",
@@ -17,6 +25,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:e2e": "wdio wdio.conf.js",
+    "test:e2e:selenium": "wdio wdio.conf.js --baseUrl http://host.docker.internal:3000",
+    "start-selenium": "docker-compose -f docker-compose.selenium-dev.yml up -d",
+    "stop-selenium": "docker-compose -f docker-compose.selenium-dev.yml down",
+    "start-selenium:slow": "docker-compose -f docker-compose.selenium-slow.yml up -d",
+    "stop-selenium:slow": "docker-compose -f docker-compose.selenium-slow.yml down",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
